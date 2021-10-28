@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -Wextra -Werror ./sources/*.c -o philo
+	gcc -Wall -Wextra -Werror ./sources/*.c ./libft/*.c -o philo
