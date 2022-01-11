@@ -1,13 +1,14 @@
 #include "../includes/philo.h"
+#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
-    int     status_code;
     t_table table_info;
 
-    status_code = 0;
-    try_parse_args(argc, argv, &table_info, &status_code);
-    if (status_code == ARGS_ERROR_CODE)
-        return (ARGS_ERROR_CODE);
-    return (0);
+    if (try_parse_args(argc, argv, &table_info) != 0)
+	{
+		printf("ti daun\n");
+		return (1);
+	}
+	return (0);
 }

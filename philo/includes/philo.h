@@ -6,7 +6,6 @@
 
 # define TRUE 1
 # define FALSE 0
-# define ARGS_ERROR_CODE 1
 
 typedef struct s_philo
 {
@@ -24,6 +23,14 @@ typedef struct s_table
 
 }   t_table;
 
-void    try_parse_args(int argc, char *argv[], t_table *table_info, int *code);
+/* Main Functions */
+
+int	try_parse_args(int argc, char *argv[], t_table *table_info);
+
+/* Libft Functions */
+
+int ft_isdigit(char c);
+int	ft_atoi(const char *str);
+int ft_isnumber(const char *str);
 
 #endif
