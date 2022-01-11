@@ -1,10 +1,16 @@
 #include "../includes/philosophers.h"
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_info	info;
+    int             status_code;
+    t_philo_info    *info;
 
-	if (!parse_program_arguments(argc, argv, &info))
-		return (1);
-	return (0);
+
+    exit_code = 0;
+    try_parse_info(&info, &status_code);
+    if (code == -1)
+    {
+        free_memory();
+    }
+    return (0);
 }
