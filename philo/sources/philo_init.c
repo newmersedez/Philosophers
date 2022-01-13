@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:53 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 21:39:45 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 22:50:32 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	try_init_philosophers(t_table *table_info)
 	i = 0;
 	while (i < table_info->num_of_philos)
 	{
-		table_info->philos[i].id = i + 1;
+		table_info->philos[i].id = i;
 		table_info->philos[i].left_id = i;
 		table_info->philos[i].right_id = (i + 1) % table_info->num_of_philos;
 		table_info->philos[i].last_time_ate = time_in_ms();
