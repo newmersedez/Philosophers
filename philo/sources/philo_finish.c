@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_finish.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:59:06 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 22:54:50 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/14 01:22:38 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ static void	deallocate_philosophers(t_table *table_info)
 	i = 0;
 	while (i < table_info->num_of_philos)
 	{
-		pthread_mutex_destroy(&table_info->philos[i].eating_mutex);
+		pthread_mutex_destroy(&table_info->philos[i]->eating_mutex);
+		++i;
+	}
+	i = 0;
+	while (i < table_info->num_of_philos)
+	{
+		free(table_info->philos[i]);
 		++i;
 	}
 	free(table_info->philos);

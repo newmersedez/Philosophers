@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 22:41:20 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/14 01:36:38 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@
 typedef struct s_philo
 {
 	pthread_t		philo_thread;
-	pthread_t		terminator;
+	pthread_t		terminator_thread;
 	pthread_mutex_t	eating_mutex;
+	int				is_eating;
 	size_t			id;
 	size_t			left_id;
 	size_t			right_id;
 	unsigned int	number_of_ate;
 	time_t			last_time_ate;
+	struct s_table	*table_info;
 }	t_philo;
 
 typedef struct s_table
@@ -50,7 +52,7 @@ typedef struct s_table
 	unsigned int	time_to_sleep;
 	unsigned int	notepme;
 	unsigned int	death;
-	t_philo			*philos;
+	t_philo			**philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	msg_mutex;
 	time_t			start_time;
@@ -61,9 +63,9 @@ typedef struct s_table
 int		try_init_table(int argc, char *argv[], t_table *table_info);
 void	deallocate_memory(t_table *table_info);
 void	start_philosophers(t_table *table_info);
-void	philo_routins(t_table *table_info, t_philo philo);
+void	philo_routins(t_philo *philo);
 time_t	time_in_ms(void);
-void	display_message(t_table *table_info, t_philo philo, unsigned int type);
+void	display_message(t_table *table_info, t_philo *philo, unsigned int type);
 
 /* Libft Functions */
 
