@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/14 01:36:38 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/14 02:02:02 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,16 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	int				optional_arg;
 	unsigned int	num_of_philos;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
 	unsigned int	notepme;
-	unsigned int	death;
+	unsigned int	alive;
+	time_t			start_time;
 	t_philo			**philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	msg_mutex;
-	time_t			start_time;
 }	t_table;
 
 /* Main Functions */
@@ -65,7 +64,7 @@ void	deallocate_memory(t_table *table_info);
 void	start_philosophers(t_table *table_info);
 void	philo_routins(t_philo *philo);
 time_t	time_in_ms(void);
-void	display_message(t_table *table_info, t_philo *philo, unsigned int type);
+void	display_message(t_philo *philo, unsigned int type);
 
 /* Libft Functions */
 
