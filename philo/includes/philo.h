@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 18:37:46 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 18:59:37 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
-#include <stdio.h>
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -51,11 +51,12 @@ typedef struct s_table
 
 int		try_init_table(int argc, char *argv[], t_table *table_info);
 void	deallocate_memory(t_table *table_info);
+void	start_philosophers(t_table *table_info);
 
 /* Libft Functions */
 
-int	ft_isdigit(char c);
-int	ft_atoi(const char *str);
-int	ft_isnumber(const char *str);
+int		ft_isdigit(char c);
+int		ft_atoi(const char *str);
+int		ft_isnumber(const char *str);
 
 #endif

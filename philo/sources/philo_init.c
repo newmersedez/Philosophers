@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:53 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 18:46:50 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 19:01:46 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static int	try_init_forks(t_table *table_info)
 {
 	size_t	i;
 
-	table_info->forks = (pthread_mutex_t *)malloc(table_info->nop * sizeof(pthread_mutex_t));
+	table_info->forks = (pthread_mutex_t *)malloc(table_info->nop
+			* sizeof(pthread_mutex_t));
 	if (!table_info->forks)
 		return (FALSE);
 	i = 0;
