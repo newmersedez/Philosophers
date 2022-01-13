@@ -6,19 +6,11 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:47 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 16:54:13 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 22:19:08 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-static int	ft_is_space(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r')
-		return (1);
-	return (0);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -28,8 +20,6 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	negative = 1;
-	while (ft_is_space(*str))
-		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
@@ -74,3 +64,4 @@ int	ft_isnumber(const char *str)
 	}
 	return (1);
 }
+

@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:59:06 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 18:59:52 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 20:36:30 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	deallocate_philosophers(t_table *table_info)
 	if (!table_info->philos)
 		return ;
 	i = 0;
-	while (i < table_info->nop)
+	while (i < table_info->num_of_philos)
 	{
 		pthread_mutex_destroy(&table_info->philos[i].eating_mutex);
 		++i;
@@ -34,7 +34,7 @@ static void	deallocate_forks(t_table *table_info)
 	if (!table_info->forks)
 		return ;
 	i = 0;
-	while (i < table_info->nop)
+	while (i < table_info->num_of_philos)
 	{
 		pthread_mutex_destroy(&table_info->forks[i]);
 		++i;
