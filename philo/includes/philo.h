@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/13 18:03:01 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/13 18:37:46 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct s_table
 
 /* Main Functions */
 
-int	try_init_table(int argc, char *argv[], t_table *table_info);
+int		try_init_table(int argc, char *argv[], t_table *table_info);
+void	deallocate_memory(t_table *table_info);
 
 /* Libft Functions */
 
