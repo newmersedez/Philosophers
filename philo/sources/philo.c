@@ -1,14 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/13 16:53:51 by lorphan           #+#    #+#             */
+/*   Updated: 2022/01/13 17:43:25 by lorphan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
-#include <stdio.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_table table_info;
+	t_table	table_info;
 
-    if (try_parse_args(argc, argv, &table_info) != 0)
-	{
-		printf("ti daun\n");
+	if (!try_init_table(argc, argv, &table_info))
 		return (1);
-	}
 	return (0);
 }

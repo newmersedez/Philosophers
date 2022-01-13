@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_libft.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/13 16:53:47 by lorphan           #+#    #+#             */
+/*   Updated: 2022/01/13 16:54:13 by lorphan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static int	ft_is_space(char c)
@@ -37,14 +49,14 @@ int	ft_atoi(const char *str)
 	return ((int)(negative * result));
 }
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int ft_isnumber(const char *str)
+int	ft_isnumber(const char *str)
 {
 	if (!str)
 		return (0);
