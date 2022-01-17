@@ -64,15 +64,12 @@ static int try_init_philosophers(t_table *table_info)
 
 int	try_parse_args(int argc, char *argv[], t_table *table_info)
 {
-	(void)argc;
-	(void)argv;
-	(void)table_info;
 	if (!table_info)
 		return (FALSE);
 	if (argc != 5 && argc != 6)
 		return (FALSE);
 	if (!check_args(argc, argv))
-		return (1);
+		return (FALSE);
 	table_info->num_of_philos = ft_atoi(argv[1]);
 	table_info->time_to_die = ft_atoi(argv[2]);
 	table_info->time_to_eat = ft_atoi(argv[3]);
