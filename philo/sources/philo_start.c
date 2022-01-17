@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:59:02 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/14 02:05:38 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/17 19:07:18 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	*philo_terminator(t_philo *philo)
 {
 	while (philo->table_info->alive)
 	{
-		if (!philo->is_eating && time_in_ms() - philo->last_time_ate >= philo->table_info->time_to_die)
+		if (!philo->is_eating && current_time() - philo->last_time_ate >= philo->table_info->time_to_die)
 		{
 			pthread_mutex_lock(&philo->eating_mutex);
 			display_message(philo, PHILO_DIED);
@@ -35,13 +35,14 @@ static int	try_start_threads(t_table *table_info)
 	size_t	i;
 
 	i = 0;
-	// table_info->start_time = time_in_ms();
+	table_info->start_time = current_time();
 	while (i < table_info->num_of_philos)
 	{
-		table_info->philos[i]->last_time_ate = time_in_ms();
+		table_info->philos[i]->last_time_ate = current_time();
 		if (pthread_create(&table_info->philos[i]->philo_thread, NULL, (void *)&philo_routins, (void *)table_info->philos[i]) != 0)
 			return (FALSE);
 		++i;
+		usleep(100);
 	}
 	i = 0;
 	while (i < table_info->num_of_philos)
@@ -49,6 +50,7 @@ static int	try_start_threads(t_table *table_info)
 		if (pthread_create(&table_info->philos[i]->terminator_thread, NULL, (void *)&philo_terminator, (void *)table_info->philos[i]) != 0)
 			return (FALSE);
 		++i;
+		usleep(100);
 	}
 	while (table_info->alive)
 		continue ;

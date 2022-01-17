@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:53 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/14 01:56:51 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/17 18:52:36 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_args(int argc, char *argv[])
 	{
 		if (!ft_isnumber(argv[i]))
 			return (FALSE);
-		if (ft_atoi(argv[i]) < 0)
+		if (ft_atoi(argv[i]) <= 0)
 			return (FALSE);
 		++i;
 	}
@@ -46,7 +46,6 @@ static int	try_init_philosophers(t_table *table_info)
 		table_info->philos[i]->left_id = i;
 		table_info->philos[i]->right_id = (i + 1) % table_info->num_of_philos;
 		table_info->philos[i]->number_of_ate = 0;
-		table_info->philos[i]->last_time_ate = time_in_ms();
 		table_info->philos[i]->is_eating = FALSE;
 		table_info->philos[i]->table_info = table_info;
 		if (pthread_mutex_init(&table_info->philos[i]->eating_mutex, NULL) != 0)
@@ -86,14 +85,13 @@ int	try_init_table(int argc, char *argv[], t_table *table_info)
 	table_info->time_to_sleep = ft_atoi(argv[4]);
 	table_info->notepme = -1;
 	table_info->alive = TRUE;
-	table_info->start_time = 0;
 	if (argc == 6)
 		table_info->notepme = ft_atoi(argv[5]);
 	if (pthread_mutex_init(&table_info->msg_mutex, NULL) != 0)
 		return (FALSE);
-	if (!try_init_philosophers(table_info))
-		return (FALSE);
 	if (!try_init_forks(table_info))
+		return (FALSE);
+	if (!try_init_philosophers(table_info))
 		return (FALSE);
 	return (TRUE);
 }

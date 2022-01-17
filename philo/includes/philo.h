@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/14 02:02:02 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/17 18:50:45 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ typedef struct s_table
 int		try_init_table(int argc, char *argv[], t_table *table_info);
 void	deallocate_memory(t_table *table_info);
 void	start_philosophers(t_table *table_info);
-void	philo_routins(t_philo *philo);
-time_t	time_in_ms(void);
+void	*philo_routins(t_philo *philo);
+time_t	current_time(void);
+void	ft_usleep(time_t ms);
 void	display_message(t_philo *philo, unsigned int type);
 
 /* Libft Functions */
