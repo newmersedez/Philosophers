@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:05:53 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/17 19:19:07 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:50:48 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static void	philo_eat(t_philo *philo)
 	display_message(philo, PHILO_EAT);
 	philo->last_time_ate = current_time();
 	philo->is_eating = TRUE;
-	ft_usleep(philo->table_info->time_to_eat);
+	usleep(philo->table_info->time_to_eat * 1000L - 16000);
+	while (current_time() - philo->last_time_ate < philo->table_info->time_to_eat)
+		continue ;
 	philo->is_eating = FALSE;
 	philo->number_of_ate++;
 	pthread_mutex_unlock(&philo->eating_mutex);
@@ -31,8 +33,13 @@ static void	philo_eat(t_philo *philo)
 
 static void	philo_sleep(t_philo *philo)
 {
+	time_t	time;
+
+	time = current_time();
 	display_message(philo, PHILO_SLEEP);
-	ft_usleep(philo->table_info->time_to_sleep);
+	usleep(philo->table_info->time_to_sleep * 1000L - 16000);
+	while (current_time() - time < philo->table_info->time_to_sleep)
+		continue ;
 }
 
 static void	philo_think(t_philo *philo)

@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
 
     if (try_parse_args(argc, argv, &table_info) != 0)
 	{
-		printf("ti daun\n");
-		return (1);
+		start_philosophers(&table_info);
+		// deallocate_memory(&table_info);
 	}
 	return (0);
 }

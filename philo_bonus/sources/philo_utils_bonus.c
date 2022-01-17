@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*   philo_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:32:19 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 00:50:42 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:35:01 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../includes/philo_bonus.h"
 
 time_t	current_time(void)
 {
@@ -18,25 +18,15 @@ time_t	current_time(void)
 	time_t			res;
 
 	gettimeofday(&tv, NULL);
-	res = 1000L * tv.tv_sec + tv.tv_usec / 1000;
+	res = 1000 * tv.tv_sec + tv.tv_usec / 1000;
 	return (res);
-}
-
-void ft_usleep(time_t ms)
-{
-	time_t	time;
-
-	time = current_time();
-	usleep(ms * 1000L - 16000);
-	while (current_time() < time + ms)
-		continue ;
 }
 
 void	display_message(t_philo *philo, unsigned int type)
 {
 	time_t	time;
 
-	pthread_mutex_lock(&philo->table_info->msg_mutex);
+	sem_wait(philo->table_info->msg_sem);	
 	time = current_time() - philo->table_info->start_time;
 	if (type == PHILO_TAKE_FORK)
 		printf("%ld %zu has taken a fork\n", time, philo->id + 1);
@@ -48,5 +38,5 @@ void	display_message(t_philo *philo, unsigned int type)
 		printf("%ld %zu is thinking\n", time, philo->id + 1);
 	if (type == PHILO_DIED)
 		printf("%ld %zu died\n", time, philo->id + 1);
-	pthread_mutex_unlock(&philo->table_info->msg_mutex);
+	sem_post(philo->table_info->msg_sem);
 }
