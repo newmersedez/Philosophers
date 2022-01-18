@@ -50,11 +50,12 @@ typedef struct s_table
 
 /* Main Functions */
 
-int		try_parse_args(int argc, char *argv[], t_table *table_info);
+int		try_init_table(int argc, char *argv[], t_table *table_info);
 void	start_philosophers(t_table *table_info);
 void	*philo_routins(t_philo *philo);
 time_t	current_time(void);
 void	display_message(t_philo *philo, unsigned int type);
+void	deallocate_memory(t_table *table_info);
 
 /* Libft Functions */
 

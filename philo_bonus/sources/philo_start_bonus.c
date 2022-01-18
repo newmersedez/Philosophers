@@ -5,6 +5,7 @@ static void	*eat_reaper(t_table *table_info)
 	size_t	eat_counter;
 	size_t	i;
 
+	// printf("lalk\n");
 	eat_counter = 0;
 	while (eat_counter < table_info->notepme)
 	{
@@ -19,7 +20,12 @@ static void	*eat_reaper(t_table *table_info)
 	sem_wait(table_info->msg_sem);
   	i = 0;
 	while (i < table_info->num_of_philos)
-		kill(table_info->philos[i++]->pid, SIGKILL);
+	{
+		// printf("dead\n");
+		kill(table_info->philos[i]->pid, SIGKILL);
+		++i;
+	}
+	// printf("ahahahaa\n");
 	return (NULL);
 }
 
@@ -63,12 +69,18 @@ static int	try_start_threads(t_table *table_info)
 	size_t	i;
 
 	i = 0;
-	if (pthread_create(&table_info->eat_counter, NULL, (void *)&eat_reaper, table_info) != 0)
+	if (table_info->notepme != -1 && pthread_create(&table_info->eat_counter, NULL, (void *)&eat_reaper, table_info) != 0)
+	{
+		// printf("Exit\n");
 		return (FALSE);
+	}
+	// printf("RHWHRRJWHRJWR\n");
 	table_info->start_time = current_time();
 	while (i < table_info->num_of_philos)
 	{
+		// printf("RHRHHR");
 		table_info->philos[i]->pid = fork();
+		// printf("AHAHAHAHAHHAAHAAHHAHAHAHAHA_LALKA\n");
 		table_info->philos[i]->last_time_ate = current_time();
 		if (table_info->philos[i]->pid == 0)
 		{
@@ -88,6 +100,8 @@ void	start_philosophers(t_table *table_info)
 {
 	if (!table_info)
 		return ;
+	// printf("START PHILOS\n");
 	if (!try_start_threads(table_info))
 		return ;
+	// printf("END START PHILOS\n");
 }

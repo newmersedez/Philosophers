@@ -50,8 +50,8 @@ static int try_init_philosophers(t_table *table_info)
 		table_info->philos[i] = (t_philo *)malloc(sizeof(t_philo));
 		if (!table_info->philos[i])
 			return (FALSE);
-		sem_unlink("eating");
-		table_info->philos[i]->eating_sem = sem_open("eating", O_CREAT, 0644, 1);
+		sem_unlink("eating_philo");
+		table_info->philos[i]->eating_sem = sem_open("eating_philo", O_CREAT, 0644, 1);
 		if (table_info->philos[i]->eating_sem == SEM_FAILED)
 			return (FALSE);
 		table_info->philos[i]->id = i;
@@ -62,7 +62,7 @@ static int try_init_philosophers(t_table *table_info)
 	return (TRUE);
 }
 
-int	try_parse_args(int argc, char *argv[], t_table *table_info)
+int	try_init_table(int argc, char *argv[], t_table *table_info)
 {
 	if (!table_info)
 		return (FALSE);
