@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:59:02 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 14:49:48 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/18 15:26:29 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	*philo_terminator(t_philo *philo)
 			pthread_mutex_unlock(&philo->eating_mutex);
 		}
 		id = philo->table_info->num_of_philos - 1;
-		if (philo->table_info->philos[id]->number_of_ate
+		if ((int)philo->table_info->philos[id]->number_of_ate
 			== philo->table_info->notepme)
 			philo->table_info->alive = FALSE;
 		usleep(100);

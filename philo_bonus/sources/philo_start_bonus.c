@@ -6,13 +6,13 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:50:18 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 14:57:51 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/18 15:04:51 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo_bonus.h"
 
-static void	*eat_reaper(t_table *table_info)
+static void	*eat_counter_handler(t_table *table_info)
 {
 	size_t	eat_counter;
 	size_t	i;
@@ -38,7 +38,7 @@ static void	*eat_reaper(t_table *table_info)
 	return (NULL);
 }
 
-static void	childs_reaper(t_table *table_info)
+static void	child_waiter(t_table *table_info)
 {
 	size_t	i;
 	size_t	j;
@@ -80,7 +80,7 @@ static int	try_start_threads(t_table *table_info)
 
 	i = 0;
 	if (table_info->notepme != -1 && pthread_create(&table_info->eat_counter,
-			NULL, (void *)&eat_reaper, table_info) != 0)
+			NULL, (void *)&eat_counter_handler, table_info) != 0)
 		return (FALSE);
 	table_info->start_time = current_time();
 	while (i < table_info->num_of_philos)
@@ -98,7 +98,7 @@ static int	try_start_threads(t_table *table_info)
 		usleep(100);
 		i++;
 	}
-	childs_reaper(table_info);
+	child_waiter(table_info);
 	return (TRUE);
 }
 
