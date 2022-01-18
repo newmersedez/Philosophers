@@ -6,7 +6,7 @@
 /*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:53:44 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 14:54:12 by lorphan          ###   ########.fr       */
+/*   Updated: 2022/01/18 15:43:08 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	deallocate_memory(t_table *table_info)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < table_info->num_of_philos)
-	{
-		pthread_join(table_info->philos[i]->terminator_thread, NULL);
-		++i;
-	}
 	i = 0;
 	while (i < table_info->num_of_philos)
 	{
