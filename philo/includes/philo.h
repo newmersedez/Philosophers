@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:56 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/17 18:50:45 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:45:38 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_table
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
-	unsigned int	notepme;
+	int				notepme;
 	unsigned int	alive;
 	time_t			start_time;
 	t_philo			**philos;
@@ -69,8 +69,8 @@ void	display_message(t_philo *philo, unsigned int type);
 
 /* Libft Functions */
 
-int	ft_atoi(const char *str);
-int	ft_isdigit(char c);
-int	ft_isnumber(const char *str);
+int		ft_atoi(const char *str);
+int		ft_isdigit(char c);
+int		ft_isnumber(const char *str);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:32:19 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 00:50:42 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:47:42 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ time_t	current_time(void)
 	return (res);
 }
 
-void ft_usleep(time_t ms)
+void	ft_usleep(time_t ms)
 {
 	time_t	time;
 

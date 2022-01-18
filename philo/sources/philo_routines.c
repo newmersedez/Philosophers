@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:05:53 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 00:50:48 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:47:01 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	philo_eat(t_philo *philo)
 	philo->last_time_ate = current_time();
 	philo->is_eating = TRUE;
 	usleep(philo->table_info->time_to_eat * 1000L - 16000);
-	while (current_time() - philo->last_time_ate < philo->table_info->time_to_eat)
+	while (current_time() - philo->last_time_ate
+		< philo->table_info->time_to_eat)
 		continue ;
 	philo->is_eating = FALSE;
 	philo->number_of_ate++;

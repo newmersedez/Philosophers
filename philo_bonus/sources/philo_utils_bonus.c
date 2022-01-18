@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:32:19 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/18 01:35:01 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:52:48 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	display_message(t_philo *philo, unsigned int type)
 {
 	time_t	time;
 
-	sem_wait(philo->table_info->msg_sem);	
+	sem_wait(philo->table_info->msg_sem);
 	time = current_time() - philo->table_info->start_time;
 	if (type == PHILO_TAKE_FORK)
 		printf("%ld %zu has taken a fork\n", time, philo->id + 1);

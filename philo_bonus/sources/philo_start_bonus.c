@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_start_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 14:50:18 by lorphan           #+#    #+#             */
+/*   Updated: 2022/01/18 14:57:51 by lorphan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo_bonus.h"
 
 static void	*eat_reaper(t_table *table_info)
@@ -5,9 +17,8 @@ static void	*eat_reaper(t_table *table_info)
 	size_t	eat_counter;
 	size_t	i;
 
-	// printf("lalk\n");
 	eat_counter = 0;
-	while (eat_counter < table_info->notepme)
+	while (eat_counter < (size_t)table_info->notepme)
 	{
 		i = 0;
 		while (i < table_info->num_of_philos)
@@ -18,14 +29,12 @@ static void	*eat_reaper(t_table *table_info)
 		eat_counter++;
 	}
 	sem_wait(table_info->msg_sem);
-  	i = 0;
+	i = 0;
 	while (i < table_info->num_of_philos)
 	{
-		// printf("dead\n");
 		kill(table_info->philos[i]->pid, SIGKILL);
 		++i;
 	}
-	// printf("ahahahaa\n");
 	return (NULL);
 }
 
@@ -33,7 +42,7 @@ static void	childs_reaper(t_table *table_info)
 {
 	size_t	i;
 	size_t	j;
-	int	status;
+	int		status;
 
 	i = 0;
 	while (i < table_info->num_of_philos)
@@ -53,7 +62,8 @@ void	*philo_terminator(t_philo *philo)
 	while (TRUE)
 	{
 		sem_wait(philo->eating_sem);
-		if (current_time() - philo->last_time_ate >= philo->table_info->time_to_die)
+		if (current_time() - philo->last_time_ate
+			>= philo->table_info->time_to_die)
 		{
 			display_message(philo, PHILO_DIED);
 			exit(1);
@@ -69,22 +79,18 @@ static int	try_start_threads(t_table *table_info)
 	size_t	i;
 
 	i = 0;
-	if (table_info->notepme != -1 && pthread_create(&table_info->eat_counter, NULL, (void *)&eat_reaper, table_info) != 0)
-	{
-		// printf("Exit\n");
+	if (table_info->notepme != -1 && pthread_create(&table_info->eat_counter,
+			NULL, (void *)&eat_reaper, table_info) != 0)
 		return (FALSE);
-	}
-	// printf("RHWHRRJWHRJWR\n");
 	table_info->start_time = current_time();
 	while (i < table_info->num_of_philos)
 	{
-		// printf("RHRHHR");
 		table_info->philos[i]->pid = fork();
-		// printf("AHAHAHAHAHHAAHAAHHAHAHAHAHA_LALKA\n");
 		table_info->philos[i]->last_time_ate = current_time();
 		if (table_info->philos[i]->pid == 0)
 		{
-			if (pthread_create(&table_info->philos[i]->terminator_thread, NULL, (void *)&philo_terminator, table_info->philos[i]) != 0)
+			if (pthread_create(&table_info->philos[i]->terminator_thread, NULL,
+					(void *)&philo_terminator, table_info->philos[i]) != 0)
 				return (FALSE);
 			philo_routins(table_info->philos[i]);
 			exit(1);
@@ -100,8 +106,6 @@ void	start_philosophers(t_table *table_info)
 {
 	if (!table_info)
 		return ;
-	// printf("START PHILOS\n");
 	if (!try_start_threads(table_info))
 		return ;
-	// printf("END START PHILOS\n");
 }

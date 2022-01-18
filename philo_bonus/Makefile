@@ -1,5 +1,5 @@
 all:
-	gcc  -pthread ./sources/*.c -o philo_bonus
+	gcc -Wall -Wextra -Werror ./sources/*.c -o philo_bonus
 
 clean:
 	rm philo_bonus

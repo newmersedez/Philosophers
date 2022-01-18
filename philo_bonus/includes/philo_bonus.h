@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 14:50:03 by lorphan           #+#    #+#             */
+/*   Updated: 2022/01/18 14:52:33 by lorphan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
@@ -30,15 +42,15 @@ typedef struct s_philo
 	unsigned int	number_of_ate;
 	time_t			last_time_ate;
 	struct s_table	*table_info;
-}   t_philo;
+}	t_philo;
 
 typedef struct s_table
 {	
-    unsigned int 	num_of_philos;
-    unsigned int 	time_to_die;
-    unsigned int 	time_to_eat;
-    unsigned int 	time_to_sleep;
-    unsigned int 	notepme;
+	unsigned int	num_of_philos;
+	unsigned int	time_to_die;
+	unsigned int	time_to_eat;
+	unsigned int	time_to_sleep;
+	int				notepme;
 	time_t			start_time;
 	pthread_t		eat_counter;
 	t_philo			**philos;
@@ -46,7 +58,7 @@ typedef struct s_table
 	sem_t			*msg_sem;
 	sem_t			*death_sem;
 	sem_t			*eating_sem;
-}   t_table;
+}	t_table;
 
 /* Main Functions */
 
@@ -59,8 +71,8 @@ void	deallocate_memory(t_table *table_info);
 
 /* Libft Functions */
 
-int ft_isdigit(char c);
-int	ft_atoi(const char *str);
-int ft_isnumber(const char *str);
+int		ft_isdigit(char c);
+int		ft_atoi(const char *str);
+int		ft_isnumber(const char *str);
 
 #endif

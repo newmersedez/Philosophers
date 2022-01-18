@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_libft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:53:47 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/17 18:55:02 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:46:04 by lorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ int	ft_isnumber(const char *str)
 	}
 	return (1);
 }
-

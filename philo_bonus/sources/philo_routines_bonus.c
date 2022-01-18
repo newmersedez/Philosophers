@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_routines_bonus.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorphan <lorphan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 14:50:15 by lorphan           #+#    #+#             */
+/*   Updated: 2022/01/18 14:55:47 by lorphan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo_bonus.h"
 
 static void	philo_eat(t_philo *philo)
@@ -9,7 +21,8 @@ static void	philo_eat(t_philo *philo)
 	display_message(philo, PHILO_EAT);
 	philo->last_time_ate = current_time();
 	usleep(philo->table_info->time_to_eat * 1000 - 15000);
-	while (current_time() - philo->last_time_ate < philo->table_info->time_to_eat)
+	while (current_time() - philo->last_time_ate
+		< philo->table_info->time_to_eat)
 		continue ;
 	sem_post(philo->table_info->eating_sem);
 	sem_post(philo->eating_sem);
