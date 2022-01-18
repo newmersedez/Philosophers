@@ -6,7 +6,7 @@
 /*   By: dmitry <dmitry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:59:06 by lorphan           #+#    #+#             */
-/*   Updated: 2022/01/17 18:47:45 by dmitry           ###   ########.fr       */
+/*   Updated: 2022/01/18 03:57:39 by dmitry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ static void	deallocate_philosophers(t_table *table_info)
 	free(table_info->philos);
 }
 
+static void destroy_threads(t_table *table_info)
+{
+
+}
+
 void	deallocate_memory(t_table *table_info)
 {
 	if (!table_info)
@@ -50,4 +55,5 @@ void	deallocate_memory(t_table *table_info)
 	pthread_mutex_destroy(&table_info->msg_mutex);
 	deallocate_forks(table_info);
 	deallocate_philosophers(table_info);
+	destroy_threads(table_info);
 }
